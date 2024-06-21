@@ -13,36 +13,6 @@ class UserProvider with ChangeNotifier {
   List<Users> _users = [];
   List<Users> get getUsers => _users;
 
-  // Future<void> refreshUser() async {
-  //   Users user = await _auth.getUserDetails();
-  //   _user = user;
-  // }
-
-  // Future<void> fetchUsers() async {
-  //   try {
-  //     QuerySnapshot usersSnapshot =
-  //         await FirebaseFirestore.instance.collection('users').get();
-  //     List<Users> users = [];
-  //     for (QueryDocumentSnapshot userSnapshot in usersSnapshot.docs) {
-  //       Users user = Users(
-  //         name: userSnapshot.get('name'),
-  //         email: userSnapshot.get('email'),
-  //         password: userSnapshot.get('password'),
-  //         photoUrl: userSnapshot.get('photoUrl'),
-  //         lastMessageTime: userSnapshot.get('lastMessageTime'),
-  //         uid: userSnapshot.get('uid'),
-  //         followers: userSnapshot.get("followers"),
-  //         following: userSnapshot.get("following"),
-  //       );
-  //       users.add(user);
-  //     }
-  //     _users = users;
-  //     notifyListeners();
-  //   } catch (error) {
-  //     print('Error fetching users: $error');
-  //   }
-  // }
-
   Future<void> fetchUsers() async {
     try {
       QuerySnapshot usersSnapshot = await FirebaseFirestore.instance

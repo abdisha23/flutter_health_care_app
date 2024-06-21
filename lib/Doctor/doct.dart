@@ -9,21 +9,21 @@ class Doct {
   final FirebaseAuth _docAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestoreOfDoctor = FirebaseFirestore.instance;
 
-  Future<model.DoctorInformation> getDoctorDetails() async {
-    User currentUser = _docAuth.currentUser!;
-    DocumentSnapshot snap = await _firestoreOfDoctor
-        .collection("Doctor")
-        .doc(currentUser.uid)
-        .get();
-    return model.DoctorInformation.fromSnap(snap);
-  }
+  // Future<model.DoctorInformation> getDoctorDetails() async {
+  //   User currentUser = _docAuth.currentUser!;
+  //   DocumentSnapshot snap = await _firestoreOfDoctor
+  //       .collection("Doctor")
+  //       .doc(currentUser.uid)
+  //       .get();
+  //   return model.DoctorInformation.fromSnap(snap);
+  // }
 
-  Stream<List<model.DoctorInformation>> readDoctors() =>
-      FirebaseFirestore.instance.collection('Doctor').snapshots().map(
-          (snapshot) => snapshot.docs
-              .map((doc) => model.DoctorInformation.fromSnap(
-                  doc.data() as DocumentSnapshot<Object?>))
-              .toList());
+  // Stream<List<model.DoctorInformation>> readDoctors() =>
+  //     FirebaseFirestore.instance.collection('Doctor').snapshots().map(
+  //         (snapshot) => snapshot.docs
+  //             .map((doc) => model.DoctorInformation.fromSnap(
+  //                 doc.data() as DocumentSnapshot<Object?>))
+  //             .toList());
 
   Future<String> signUpDoctor({
     required String email,

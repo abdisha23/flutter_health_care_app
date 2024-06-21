@@ -10,24 +10,25 @@ import 'package:healthcare_app/Doctor/doctor.dart';
 import 'package:healthcare_app/Post/add_post.dart';
 import 'package:healthcare_app/Post/feeds.dart';
 import 'package:healthcare_app/Providers/provider.dart';
-import 'package:healthcare_app/Auntethication/signUpOne.dart';
-import 'package:healthcare_app/Patient/home.dart';
-import 'package:healthcare_app/Auntethication/signup_screen.dart';
-import 'package:healthcare_app/Doctor/home_of_doctor.dart';
-import 'package:healthcare_app/Doctor/welcomePage.dart';
-import 'package:healthcare_app/Screens/registeration_choice.dart';
+// import 'package:healthcare_app/Auntethication/signUpOne.dart';
+// import 'package:healthcare_app/Patient/home.dart';
+// import 'package:healthcare_app/Auntethication/signup_screen.dart';
+// import 'package:healthcare_app/Doctor/home_of_doctor.dart';
+// import 'package:healthcare_app/Doctor/welcomePage.dart';
+// import 'package:healthcare_app/Screens/registeration_choice.dart';
 import 'package:healthcare_app/responsive/responsive.dart';
 import 'package:healthcare_app/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'Appointment/my_appointment_page.dart';
-import 'Chat U/page/chats_page2.dart';
-import 'Notification/notification.dart';
+import 'firebase_options.dart';
+// import 'Appointment/my_appointment_page.dart';
+// import 'Chat U/page/chats_page2.dart';
+// import 'Notification/notification.dart';
 import 'package:timezone/data/latest.dart'
     as tzdata; // Import the timezone data
-import 'package:timezone/timezone.dart' as tz; // Import the timezone library
+//import 'package:timezone/timezone.dart' as tz; // Import the timezone library
 import 'Screens/screen.dart';
-import 'Appointment/app.dart';
+//import 'Appointment/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

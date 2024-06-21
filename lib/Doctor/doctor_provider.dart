@@ -7,7 +7,7 @@ class DoctorProvider with ChangeNotifier {
   List<DoctorInformation> get doctors => _doctors;
 
   DoctorInformation? _currentDoctor;
-  DoctorInformation? get currentUser => _currentDoctor;
+  DoctorInformation? get currentUser => _currentDoctor!;
 
   Future<void> fetchDoctors() async {
     try {
@@ -35,7 +35,6 @@ class DoctorProvider with ChangeNotifier {
         String speciality = userData['speciality'] ?? '';
         String role = userData['role'] ?? '';
         bool approved = userData['approved'] ?? '';
-
         String lastMessageTime = userData['lastMessageTime'] ?? '';
 
         DoctorInformation doctor = DoctorInformation(
@@ -87,7 +86,6 @@ class DoctorProvider with ChangeNotifier {
       String speciality = userData['speciality'] ?? '';
       String role = userData['role'] ?? '';
       bool approved = userData['approved'] ?? '';
-
       String lastMessageTime = userData['lastMessageTime'] ?? '';
 
       DoctorInformation doctor = DoctorInformation(

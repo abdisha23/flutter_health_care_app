@@ -42,6 +42,11 @@ class Auth {
 
         String photoUrl =
             await Storage().uploadImageToStorage('profilePics', file!, false);
+        // Get the current date and time
+        DateTime now = DateTime.now();
+
+// Format the date and time as needed (e.g., in ISO 8601 format)
+        String formattedDateTime = now.toIso8601String();
         //add user info to database
         model.Users user = model.Users(
           email: email,
@@ -49,7 +54,7 @@ class Auth {
           name: name,
           photoUrl: photoUrl,
           uid: cred.user!.uid,
-          lastMessageTime: '',
+          lastMessageTime: formattedDateTime,
           followers: [],
           following: [],
           role: role,

@@ -46,7 +46,6 @@ class AppointmentsProvider with ChangeNotifier {
             userSnapshot.data() as Map<String, dynamic>;
         String doctorId = userData['doctorId'] ?? '';
         String userId = userData['userId'] ?? '';
-
         String availableDates = userData['date'] ?? [];
         String availableTimeRanges = userData['timeRange'] ?? [];
 
@@ -76,7 +75,6 @@ class AppointmentsProvider with ChangeNotifier {
           userSnapshot.data() as Map<String, dynamic>;
       String doctorId = userData['doctorId'] ?? '';
       String userId = userData['userId'] ?? '';
-
       String availableDates = userData['date'] ?? [];
       String availableTimeRanges = userData['timeRange'] ?? [];
 

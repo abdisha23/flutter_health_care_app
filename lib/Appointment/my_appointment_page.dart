@@ -39,7 +39,7 @@ class _MyAppointmentPageState extends State<MyAppointmentPage> {
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
-        itemCount: doc.length,
+        itemCount: app.length,
         itemBuilder: (context, index) {
           DoctorInformation doctor = doc.firstWhere(
               (doctor) =>
@@ -109,9 +109,6 @@ class _MyAppointmentPageState extends State<MyAppointmentPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Image(
-                            //   image: NetworkImage(doc[index].docPhotoUrl),
-                            // ),
                             Text(doctor.name,
                                 style: TextStyle(
                                     fontSize: 22,

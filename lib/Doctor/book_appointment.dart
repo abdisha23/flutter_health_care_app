@@ -122,17 +122,6 @@ class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
                     date: selectedDate!.toString(),
                     timeRange: selectedTimeRange!,
                   );
-                  // FirebaseFirestore.instance
-                  //     .collection('appointment')
-                  //     .where('userId', isEqualTo: userId)
-                  //     .get()
-                  //     .then((QuerySnapshot querySnapshot) {
-                  //   querySnapshot.docs.forEach((doc) {
-                  //     var data = doc.data();
-                  //     // Access the data for each document
-                  //     var date = (data! as Map<String, dynamic>)['date'];
-                  //     var timeRange =
-                  //         (data! as Map<String, dynamic>)['timeRange'];
 
                   // Pass the data to the next screen
                   Navigator.push(
@@ -152,40 +141,27 @@ class _MyAppointmentScreenState extends State<MyAppointmentScreen> {
                     'availableTimeRanges':
                         FieldValue.arrayRemove([selectedTimeRange]),
                   }).then((value) {
-                    print("The time range to be deleted ${selectedTimeRange}");
+                    print("The time range to be deleted $selectedTimeRange");
                     print('Data removed from array successfully!');
                   }).catchError((error) {
                     print('Error removing data from array: $error');
-                  }
-
-                          //);
-                          // }
-                          );
+                  });
                   FirebaseFirestore.instance
                       .collection('Doctor')
                       .doc(widget.doctor.doctorId)
                       .update({
                     'availableDates': FieldValue.arrayRemove([selectedDate]),
                   }).then((value) {
-                    print("The Dates to be deleted ${selectedDate}");
+                    print("The Dates to be deleted $selectedDate");
                     print('Data removed from array successfully!');
                   }).catchError((error) {
                     print('Error removing data from array: $error');
-                  }
-
-                          //);
-                          // }
-                          );
-                }
-                //);
-                // }
-                // Update the Firestore document to reflect the changes
-
-                else {
+                  });
+                } else {
                   // Show an error message if date and time are not selected
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Please select a date and time.'),
+                      content: Text('Please select the date and time.'),
                     ),
                   );
                 }

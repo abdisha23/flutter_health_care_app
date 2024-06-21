@@ -29,116 +29,25 @@ class _MyAppointmentPageState extends State<DocMyAppointmentPage> {
 
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: const Text('My Appointments'),
-    //   ),
-    //   body: CustomScrollView(
-    //     slivers: <Widget>[
-    //       SliverList(
-    //         delegate: SliverChildBuilderDelegate(
-    //           (BuildContext context, int index) {
-    //             DoctorInformation doctor = doc.firstWhere(
-    //                 (doctor) => doctor.doctorId == app[index].doctorId,
-    //                 orElse: () => DoctorInformation(
-    //                       name: '',
-    //                       email: '',
-    //                       password: '',
-    //                       availableDates: [],
-    //                       availableTimeRanges: [],
-    //                       contact: '',
-    //                       docPhotoUrl: '',
-    //                       doctorDoc: '',
-    //                       doctorId: '',
-    //                       gender: '',
-    //                       language: '',
-    //                       speciality: '',
-    //                       role: '',
-    //                       approved: false,
-    //                       lastMessageTime: '',
-    //                     ));
-    //             if (doctor != null) {
-    //               return ListTile(
-    //                 leading: CircleAvatar(
-    //                   backgroundImage: NetworkImage(doctor.docPhotoUrl),
-    //                 ),
-    //                 title: Text(
-    //                   doctor.name,
-    //                   style: const TextStyle(
-    //                     fontSize: 18,
-    //                     color: Colors.blue, // Change the text color to blue
-    //                     fontWeight: FontWeight.bold, // Make the text bold
-    //                     fontStyle: FontStyle.italic, // Add italic style
-    //                     decoration:
-    //                         TextDecoration.underline, // Underline the text
-    //                     decorationColor:
-    //                         Colors.orange, // Set the underline color to orange
-    //                     decorationThickness: 2, // Set the underline thickness
-    //                   ),
-    //                 ),
-    //                 subtitle: Text(
-    //                   'Date: ${app[index].date}',
-    //                   style: const TextStyle(
-    //                     fontSize: 18,
-    //                     color: Colors.blue, // Change the text color to blue
-    //                     fontWeight: FontWeight.bold, // Make the text bold
-    //                     fontStyle: FontStyle.italic, // Add italic style
-    //                     decoration:
-    //                         TextDecoration.underline, // Underline the text
-    //                     decorationColor:
-    //                         Colors.orange, // Set the underline color to orange
-    //                     decorationThickness: 2, // Set the underline thickness
-    //                   ),
-    //                 ),
-    //                 trailing: Text(
-    //                   'Time: ${app[index].timeRange}',
-    //                   style: const TextStyle(
-    //                     fontSize: 18,
-    //                     color: Colors.blue, // Change the text color to blue
-    //                     fontWeight: FontWeight.bold, // Make the text bold
-    //                     fontStyle: FontStyle.italic, // Add italic style
-    //                     decoration:
-    //                         TextDecoration.underline, // Underline the text
-    //                     decorationColor:
-    //                         Colors.orange, // Set the underline color to orange
-    //                     decorationThickness: 2, // Set the underline thickness
-    //                   ),
-    //                 ),
-    //               );
-    //             } else {
-    //               return const ListTile(
-    //                 title: Text('Doctor not found'),
-    //               );
-    //             }
-    //           },
-    //           childCount: app.length,
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // );
     final appointments = Provider.of<AppointmentsProvider>(context);
     final List<Appointment> app = appointments.appointments;
 
-    // final doctors = Provider.of<DoctorProvider>(context);
-    // final List<DoctorInformation> doc = doctors.doctors;
+    final patients = Provider.of<UserProvider>(context);
+    final List<Users> patient = patients.getUsers;
 
-    final doctors = Provider.of<UserProvider>(context);
-    final List<Users> doc = doctors.getUsers;
-
-    final doctor = Provider.of<DoctorProvider>(context);
-    final DoctorInformation docto = doctor.currentUser!;
+    final user = Provider.of<DoctorProvider>(context);
+    final DoctorInformation docto = user.currentUser!;
 
     return Container(
       height: 800,
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
-        itemCount: doc.length,
+        itemCount: app.length,
         itemBuilder: (context, index) {
-          Users doctor = doc.firstWhere(
-              (doctor) =>
-                  doctor.uid == app[index].userId &&
+          Users user = patient.firstWhere(
+              (user) =>
+                  user.uid == app[index].userId &&
                   (docto.doctorId == app[index].doctorId),
               orElse: () => const Users(
                     name: '',
@@ -151,7 +60,7 @@ class _MyAppointmentPageState extends State<DocMyAppointmentPage> {
                     followers: [],
                     following: [],
                   ));
-          if (doctor.uid == app[index].userId &&
+          if (user.uid == app[index].userId &&
               docto.doctorId == app[index].doctorId) {
             return Column(
               children: [
@@ -182,7 +91,7 @@ class _MyAppointmentPageState extends State<DocMyAppointmentPage> {
                               topRight: Radius.circular(15),
                             ),
                             child: Image.network(
-                              doctor.photoUrl,
+                              user.photoUrl,
                               width: 100,
                               height: 100,
                               fit: BoxFit.cover,
@@ -199,9 +108,9 @@ class _MyAppointmentPageState extends State<DocMyAppointmentPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             // Image(
-                            //   image: NetworkImage(doc[index].docPhotoUrl),
+                            //   image: NetworkImage(patient[index].docPhotoUrl),
                             // ),
-                            Text(doctor.name,
+                            Text(user.name,
                                 style: TextStyle(
                                     fontSize: 22,
                                     fontWeight: FontWeight.w500,
@@ -210,7 +119,7 @@ class _MyAppointmentPageState extends State<DocMyAppointmentPage> {
                               height: 8,
                             ),
                             Text(
-                              doctor.email,
+                              user.email,
                               style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.blue.withOpacity(0.6)),
